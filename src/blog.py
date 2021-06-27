@@ -5,7 +5,11 @@ import os
 ################### CREATE TABLE AND DATABASE ###################
 
 def create_database(path):
-    pass
+    try:
+        conn = sqlite3.connect(path)
+        return conn
+    except:
+        print('something went wrong at create_database func')
 
 def create_table(name):
     pass
