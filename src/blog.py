@@ -11,16 +11,27 @@ def create_database(path):
     except:
         print('something went wrong at create_database func')
 
-def create_table(name):
-    pass
+def create_table():
+    blog_table = '''
+    CREATE TABLE IF NOT EXISTS Blog(
+        id INTEGER PRIMARY KEY UNIQUE,
+        post VARCHAR(50) NOT NULL,
+        description TEXT
+    );
+    '''
+    conn = create_database('Blog.db')
+    cursor = conn.cursor()
+    cursor.execute(blog_table)
+    conn.commit()
+
 
 #################### INSERT DATA TO DATABASE ####################
 
-def insert_post(post):
-    pass
-
-def insert_description(description):
-    pass
+def post_and_description(post,description):
+    insert_data = '''
+        INSERT INTO Blog(id,post,description)
+        VALUES({},{})
+    '''
 
 #################### READ DATA FROM DATABASE ####################
 
