@@ -129,4 +129,7 @@ dmypy.json
 .pyre/
 
 # vscode
-.vscode/settings.json
+.vscode/
+
+# project database
+blog.db
