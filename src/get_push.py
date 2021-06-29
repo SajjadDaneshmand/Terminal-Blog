@@ -30,13 +30,22 @@ def insert_category(name):
     conn = connectin.db_connection()
     cursor = conn.cursor()
     cursor.execute(insert_data, info)
+    cursor.close()
     conn.commit()
     conn.close()
 
 #################### READ DATA FROM DATABASE ####################
 
-def read_all_post():
-    pass
+def read_posts():
+    conn = connectin.db_connection()
+    cursor = conn.cursor()
+    data = []
+    data_showing = """
+            SELECT title, description FROM post
+        """
+    for i in cursor.execute(data_showing):
+        data.append(i)
+    return data
 
 def read_all_category():
     pass
