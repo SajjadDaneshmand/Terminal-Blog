@@ -1,9 +1,12 @@
 # internal
-import connectin
+import functions
 
 # standard
 import sqlite3
 import os
+
+
+from colorama import Fore
 
 
 #################### INSERT DATA TO DATABASE ####################
@@ -15,7 +18,7 @@ def insert_post(title,description,category_id):
         VALUES(?, ?, ?)
     """
     info = (title, description, category_id)
-    conn = connectin.db_connection()
+    conn = functions.db_connection()
     cursor = conn.cursor()
     cursor.execute(insert_data, info)
     conn.commit()
@@ -29,7 +32,7 @@ def insert_category(name):
         VALUES(?)
     """
     info = (name,)
-    conn = connectin.db_connection()
+    conn = functions.db_connection()
     cursor = conn.cursor()
     cursor.execute(insert_data, info)
     cursor.close()
@@ -40,15 +43,48 @@ def insert_category(name):
 
 def id_and_title():
     '''This function return id and title column from post table'''
-    conn = connectin.db_connection()
+    conn = functions.db_connection()
     cursor = conn.cursor()
-    show_post_table = """
+    titles = """
             SELECT id, title
             FROM post
         """
     data = ['id : title']
-    for row in cursor.execute(show_post_table):
+    for row in cursor.execute(titles):
         data.append(f'{row[0]} : {row[1]}')
+    return data
 
-def read_all_category():
-    pass
+def categories():
+    '''This function return name column from category table'''
+    conn = functions.db_connection()
+    cursor = conn.cursor()
+    names = """
+            SELECT id, name
+            FROM category
+        """
+    data = ['id : name']
+    for row in cursor.execute(names):
+        data.append(f'{row[0]} : {row[1]}')
+    return data
+def get_description():
+    while True:
+        try:
+            ID = int(input(Fore.WHITE + 'Give me the ID you want: '))
+        except:
+            print(Fore.RED+'give me a number not string or None')
+            continue
+        description = """
+                SELECT title, description
+                FROM post
+                WHERE id = ?
+            """
+        info = (ID,)
+        conn = functions.db_connection()
+        cursor = conn.cursor()
+        try:
+            for row in cursor.execute(description, info):
+                row = f'{Fore.GREEN}{row[0]} : {Fore.WHITE}{row[1]}'
+                print(row)
+            break
+        except:
+            print(Fore.RED + 'your number is out of range' + Fore.WHITE)

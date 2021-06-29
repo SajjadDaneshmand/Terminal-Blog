@@ -1,12 +1,12 @@
 # internal
-import connectin
+import functions
 
 # standard
 import sqlite3
 
 def tables_creator():
     '''This function create a table of a blog database'''
-    conn = connectin.db_connection()
+    conn = functions.db_connection()
     cursor = conn.cursor()
     tables = [
         """
