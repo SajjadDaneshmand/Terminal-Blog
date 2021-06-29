@@ -11,7 +11,10 @@ import sys
 from colorama import Fore
 
 def Introduction():
-    os.system('cls')
+    if sys.platform == 'linux':
+        os.system('clear')
+    else:
+        os.system('cls')
     print(Fore.YELLOW + """
     +-------------------------------------------------------------------------+
     |                               Blog Helper                               |
@@ -27,7 +30,10 @@ def Introduction():
     +-------------------------------------------------------------------------+
     """)
     time.sleep(3)
-    os.system('cls')
+    if sys.platform == 'linux':
+        os.system('clear')
+    else:
+        os.system('cls')
     print(Fore.GREEN + "\nWhat you want? (please enter the number of which you want)")
     time.sleep(0.2)
     print(Fore.CYAN + f"""
@@ -74,7 +80,10 @@ def backend_and_user_interface():
             elif user_input == 4:
                 _categories()
         elif user_input == 'c':
-            os.system('cls')
+            if sys.platform == 'linux':
+                os.system('clear')
+            else:
+                os.system('cls')
         elif user_input == 'l':
             list_of_do()
         elif user_input == 'e':
