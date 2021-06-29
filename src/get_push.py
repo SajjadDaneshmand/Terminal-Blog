@@ -66,6 +66,7 @@ def categories():
     for row in cursor.execute(names):
         data.append(f'{row[0]} : {row[1]}')
     return data
+    
 def get_description():
     while True:
         try:
@@ -88,3 +89,4 @@ def get_description():
             break
         except:
             print(Fore.RED + 'your number is out of range' + Fore.WHITE)
+

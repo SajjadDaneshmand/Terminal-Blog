@@ -7,7 +7,7 @@ import os
 import time
 import sys
 
-# TODO: bepors khareji chie
+# colorama
 from colorama import Fore
 
 def Introduction():
