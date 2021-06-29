@@ -9,6 +9,7 @@ import os
 #################### INSERT DATA TO DATABASE ####################
 
 def insert_post(title,description,category_id):
+    '''This function insert title, descripton and category_id to post table from blog database'''
     insert_data = """
         INSERT INTO post(title, description, category_id)
         VALUES(?, ?, ?)
@@ -22,6 +23,7 @@ def insert_post(title,description,category_id):
     
 
 def insert_category(name):
+    '''This function insert name of category to category table'''
     insert_data = """
         INSERT INTO category(name)
         VALUES(?)
@@ -36,6 +38,7 @@ def insert_category(name):
 
 #################### READ DATA FROM DATABASE ####################
 
+<<<<<<< HEAD
 def read_posts():
     conn = connectin.db_connection()
     cursor = conn.cursor()
@@ -46,6 +49,19 @@ def read_posts():
     for i in cursor.execute(data_showing):
         data.append(i)
     return data
+=======
+def id_and_title():
+    '''This function return id and title column from post table'''
+    conn = connectin.db_connection()
+    cursor = conn.cursor()
+    show_post_table = """
+            SELECT id, title
+            FROM post
+        """
+    data = ['id : title']
+    for row in cursor.execute(show_post_table):
+        data.append(f'{row[0]} : {row[1]}')
+>>>>>>> 59de845b46f4b585effff2229b625d40fc79d982
 
 def read_all_category():
     pass

@@ -12,4 +12,4 @@ BASE_DIR = os.path.dirname(
 
 # path to important file
 DATABASE_NAME = 'blog.db'
-DATABASE_PATH = os.path.join(BASE_DIR,'database/blog.py')
+DATABASE_PATH = os.path.join(BASE_DIR,'database/blog.db')
